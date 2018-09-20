@@ -1,0 +1,20 @@
+<?php
+namespace App\Infrastructure\Eloquent;
+
+use App\Domain\%1$s\%1$s;
+use App\Domain\%1$s\%1$sRepository;
+
+class %1$sRepositoryEloquent implements %1$sRepository
+{
+    use Helper;
+
+    /**
+     * @var %1$s
+     */
+    private $model;
+
+    public function __construct(%1$s $model)
+    {
+        $this->model = $model;
+    }
+}

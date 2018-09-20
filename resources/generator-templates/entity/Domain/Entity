@@ -1,0 +1,15 @@
+<?php
+namespace App\Domain\%1$s;
+
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property integer $id
+ */
+class BackendUser extends Model
+{
+    protected $table = "%5$s";
+}

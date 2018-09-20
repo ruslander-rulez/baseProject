@@ -1,0 +1,25 @@
+<?php
+namespace App\Domain\%1$s;
+
+use Illuminate\Database\Eloquent\Model;
+
+interface %1$sRepository
+{
+
+    /**
+     * @param int $id
+     *
+     * @return %1$s|null
+     */
+    public function byId($id);
+
+    /**
+     * @param Model $%2$s
+     */
+    public function store(Model $%2$s);
+
+    /**
+     * @param Model $%2$s
+     */
+    public function delete(Model $%2$s);
+}
