@@ -32,7 +32,7 @@
                     </div>
                      <div class="col-md-6">
                         <div class="btn-group">
-                            <button id="sample_editable_1_new" class="btn sbold green" v-on:click="showNewProductForm = true"> Add New
+                            <button id="sample_editable_1_new" class="btn sbold green" v-on:click="showNewAdviceForm = true"> Новый совет
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -64,7 +64,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="dataTables_length" id="sample_1_length">
-                            <label>Show
+                            <label>Показать
                                 <select
                                         name="sample_editable_1_length" aria-controls="sample_editable_1"
                                         class="form-control input-sm input-xsmall input-inline"
@@ -72,7 +72,7 @@
                                     <option v-for="perPage in perPageVariables" v-bind:value="perPage.val">
                                         {{ perPage.val }}
                                     </option>
-                                </select> records
+                                </select> записей
                             </label>
                         </div>
                     </div>
@@ -96,34 +96,32 @@
                                 > #
                             </th>
                             <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1"
-                                > Артикул
+                                > Заголовок
                             </th>
                             <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1"
-                                > Название
+                                > Локаль
                             </th>
                             <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1"
-                                > Количество
+                                > Дата размещения
                             </th>
                             <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1"
-                                > Брак
+                                > Опубликовано
                             </th>
                             <th tabindex="0" rowspan="1" colspan="1" width="46"
                                 >
                             </th>
-
-
                         </tr>
                         </thead>
                         <tbody>
 
-                            <product-row
-                                    v-for="(product, index ) in products"
-                                    v-bind:key="product.id"
-                                    v-bind:inputProduct="product"
-                                    v-on:remove="products.splice(index, 1)"
+                            <advice-row
+                                    v-for="(advice, index ) in advices"
+                                    v-bind:key="advice.id"
+                                    v-bind:inputAdvice="advice"
+                                    v-on:remove="advices.splice(index, 1)"
                                     v-on:updateTable="getData"
                                     v-on:message="showAlert"
-                            ></product-row>
+                            ></advice-row>
 
                         </tbody>
                     </table>
@@ -140,8 +138,8 @@
                 </div>
             </div>
         </div>
-        <product-edit v-if="showNewProductForm" v-on:close="showNewProductForm=false" :inputProduct="defaultProduct" v-on:created="created">
-        </product-edit>
+        <advice-edit v-if="showNewAdviceForm" v-on:close="showNewAdviceForm=false" :inputAdvice="defaultAdvice" v-on:created="created">
+        </advice-edit>
     </div>
     <!-- END EXAMPLE TABLE PORTLET-->
 
@@ -151,14 +149,15 @@
     export default {
         data() {
             return {
-                showNewProductForm : false,
-                defaultProduct: {
+                showNewAdviceForm : false,
+                defaultAdvice: {
                     id: null,
-                    name: "",
-                    vendor_code: "",
-                    price: [],
+                    attachment_id: "",
+                    slug: "",
+                    full_text: "",
+                    short_text: "",
                 },
-                products: [],
+                advices: [],
                 perPage: null,
                 page: 1,
                 maxCountItems: 0,
@@ -185,14 +184,16 @@
                 this.alertMessage.push(message)
             },
             created: function() {
-                this.showAlert("Товар был создан")
+                this.showAlert("Совет был создан")
                 this.getData()
             },
             getData: function () {
                 axios
-                    .get('/root/product/list', {params: {page: this.page, perPage: this.perPage}})
+                    .get('/root/advice/list', {params: {page: this.page, perPage: this.perPage}})
                     .then((response) => {
-                        this.products = response.data;
+
+                        this.advices = response.data;
+
                         this.maxCountItems = parseInt(response.headers.maxcountitems);
                         this.countEntries.from = (this.page * this.perPage) - (this.perPage - 1);
                         this.countEntries.to = this.page * this.perPage;
@@ -209,10 +210,6 @@
         mounted() {
             this.perPage = this.perPageVariables[this.perPageVariables.length - 1].val;
             this.getData();
-
-            window.HTTP.get("/currency/list?all=1").then((responce) => {
-                window.currencies = responce.data
-            })
         }
     }
 </script>

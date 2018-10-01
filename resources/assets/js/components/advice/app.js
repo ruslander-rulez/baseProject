@@ -10,8 +10,12 @@ require('../../bootstrap');
 window.Vue = require('vue');
 
 import * as uiv from 'uiv'
+import ToggleButton from 'vue-js-toggle-button'
+
 
 window.Vue.use(uiv, {prefix: 'uiv'});
+
+window.Vue.use(ToggleButton);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -20,9 +24,11 @@ window.Vue.use(uiv, {prefix: 'uiv'});
 
 
 Vue.component('pagination', require('../Pagination.vue'));
+Vue.component('error-block', require('../ErrorFormGroupBlock.vue'));
+Vue.component('dropzone', require('../Dropzone.vue'));
 
-
-Vue.component('ipbantable', require('./IpbanTable.vue'));
-Vue.component('ipbantable-row', require('./Row.vue'));
+Vue.component('advice-table', require('./Table.vue'));
+Vue.component('advice-row', require('./Row.vue'));
+Vue.component('advice-edit', require('./Edit.vue'));
 
 

@@ -94,7 +94,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END CONTAINER -->
     <!-- BEGIN FOOTER -->
     <div class="page-footer">
-        <div class="page-footer-inner"> {{ date("Y") }} &copy; Magnifiers Admin Panel
+        <div class="page-footer-inner"> {{ date("Y") }} &copy; <a href="http://keenthemes.com/preview/metronic/theme/admin_1_material_design/page_general_search_3.html">
+                Magnifiers Admin Panel
+            </a>
         </div>
         <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>

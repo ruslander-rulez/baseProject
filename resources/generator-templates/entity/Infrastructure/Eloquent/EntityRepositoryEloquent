@@ -3,6 +3,9 @@ namespace App\Infrastructure\Eloquent;
 
 use App\Domain\%1$s\%1$s;
 use App\Domain\%1$s\%1$sRepository;
+use App\Domain\%1$s\%1$sFilter;
+use App\Domain\Core\Pagination;
+use App\Domain\Core\Sort;
 
 class %1$sRepositoryEloquent implements %1$sRepository
 {
@@ -16,5 +19,24 @@ class %1$sRepositoryEloquent implements %1$sRepository
     public function __construct(%1$s $model)
     {
         $this->model = $model;
+    }
+
+    /**
+     * @param %1$sFilter $filter
+     * @param Pagination|null $pagination
+     * @param Sort|null $sort
+     * @return %1$s[]
+     */
+    public function all(%1$sFilter $filter, ?Pagination $pagination = null, ?Sort $sort = null)
+    {
+        if ($pagination) {
+            $items =  $this->model->forPage($pagination->page(), $pagination->peerPage())->get();
+            $maxItems =  $this->model->count();
+            return [
+                "items" => $items,
+                "total" => $maxItems
+            ];
+        }
+        return $this->model->all();
     }
 }

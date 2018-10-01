@@ -1,8 +1,4 @@
 {
-    "/js/stock-operation.js": "/js/stock-operation.js",
-    "/js/product.js": "/js/product.js",
-    "/js/telban.js": "/js/telban.js",
-    "/css/app.css": "/css/app.css",
-    "/js/ipban.js": "/js/ipban.js",
-    "/js/currency.js": "/js/currency.js"
+    "/js/advice.js": "/js/advice.js",
+    "/css/app.css": "/css/app.css"
 }

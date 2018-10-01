@@ -40,6 +40,15 @@
                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
             </li>
             <li class="nav-item start ">
+
+            <li class="nav-item  @if (Route::currentRouteName() ==  'root.advice.index') active @endif">
+                <a href="{{ route("root.advice.index") }}" class="nav-link ">
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                    <span class="title">Советы</span>
+                </a>
+            </li>
+
+
    {{--         <li class="nav-item  @if (in_array(Route::currentRouteName(), [
                     'root.telban.index',
                     'root.ipban.index',

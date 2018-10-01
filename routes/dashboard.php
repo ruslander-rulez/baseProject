@@ -25,5 +25,22 @@ Route::group(['middleware' => 'auth.as.admin', "prefix" => "/root", "as" => "roo
     Route::post("/logout", ["as" => "logout", "uses" => "Auth\AuthorizationController@logout"]);
     Route::get("/", ["uses" => "RootController@index", "as" => "index"]);
 
+    Route::group(["prefix" => "/advice"], function () {
+        Route::get("/", ["uses" => "AdviceController@index", "as" => "advice.index"]);
+
+        Route::get("/list", ["uses" => "AdviceController@list", "as" => "advice.list"]);
+        Route::put("/", ["uses" => "AdviceController@save", "as" => "advice.save"]);
+        Route::post("/", ["uses" => "AdviceController@create", "as" => "advice.create"]);
+        Route::delete("/", ["uses" => "AdviceController@delete", "as" => "advice.delete"]);
+    });
+
+    Route::group(["prefix" => "/attachment"], function () {
+        Route::get("/", ["uses" => "AdviceController@index", "as" => "advice.index"]);
+
+//        Route::get("/list", ["uses" => "AdviceController@list", "as" => "advice.list"]);
+//        Route::put("/", ["uses" => "AdviceController@save", "as" => "advice.save"]);
+        Route::post("/", ["uses" => "AttachmentController@create", "as" => "attachment.create"]);
+//        Route::delete("/", ["uses" => "AdviceController@delete", "as" => "advice.delete"]);
+    });
 
 });

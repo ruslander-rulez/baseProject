@@ -1,24 +1,23 @@
 <template>
     <tr role="row">
         <td>
-          {{ product.id }}
+          {{ advice.id }}
         </td>
-        <td> {{ product.vendor_code}}</td>
+        <td> {{ advice.title}}</td>
         <td>
-          {{ product.name }}
-        </td>
-        <td>
-            {{ product.quantity}}
+          {{ advice.locale }}
         </td>
         <td>
-            {{ product.defect }}
+            {{ advice.created_at }}
+        </td>
+        <td>
+            {{ advice.is_publish }}
         </td>
         <td>
             <button class="bnt btn-md btn-default" v-on:click="editPopup=true"><i class="fa fa-edit"></i></button>
 
-            <product-edit v-if="editPopup" v-on:close="editPopup=false" :inputProduct="product" v-on:updated="updated">
-
-            </product-edit>
+            <advice-edit v-if="editPopup" v-on:close="editPopup=false" :inputAdvice="advice" v-on:updated="updated">
+            </advice-edit>
 
 
             <uiv-popover title="Вы уверены?" trigger="manual" v-model="showDeleteWarning">
@@ -40,25 +39,24 @@
         data() {
             return {
                 bufer: {},
-                product: {},
+                advice: {},
                 showDeleteWarning: false,
                 editPopup: false
             }
         },
         mounted() {
-            this.product = this.inputProduct
+            this.advice = this.inputAdvice
         },
         name: "Row",
-        props: ['inputProduct'],
+        props: ['inputAdvice'],
         methods: {
-            updated: function (product) {
-                console.log(product);
-                this.product = product;
-                this.$emit("message", "Товар был обновлен")
+            updated: function (advice) {
+                this.advice = advice;
+                this.$emit("message", "Совет был обновлен")
             },
             deleteItem: function () {
                 this.showDeleteWarning = false
-                window.HTTP.delete("/product",{params: {
+                window.HTTP.delete("/advice",{params: {
                     "id" : this.product.id
                 }}).then(response => {
                     this.$emit('updateTable')

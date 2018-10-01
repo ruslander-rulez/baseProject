@@ -5,6 +5,14 @@ use Illuminate\Database\Eloquent\Model;
 
 interface %1$sRepository
 {
+    /**
+     * @param AdviceFilter $adviceFilter
+     * @param Pagination|null $pagination
+     * @param Sort|null $sort
+     * @return %1$s[]
+     */
+    public function all(%1$sFilter $filter, ?Pagination $pagination = null, ?Sort $sort = null);
+
 
     /**
      * @param int $id

@@ -14,9 +14,6 @@ let mix = require('laravel-mix');
 mix.disableNotifications();
 mix.copy("resources/assets/dashboard/", "public/dashboard");
 
-mix.js('resources/assets/js/components/telban/app.js', 'public/js/telban.js')
-    .js('resources/assets/js/components/ipban/app.js', 'public/js/ipban.js')
-    .js('resources/assets/js/components/currency/app.js', 'public/js/currency.js')
-    .js('resources/assets/js/components/product/app.js', 'public/js/product.js')
-    .js('resources/assets/js/components/stock-operation/app.js', 'public/js/stock-operation.js')
+mix
+    .js('resources/assets/js/components/advice/app.js', 'public/js/advice.js')
     .sass('resources/assets/sass/app.scss', 'public/css');
