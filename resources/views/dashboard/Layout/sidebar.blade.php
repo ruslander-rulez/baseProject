@@ -39,12 +39,26 @@
                 </form>--}}
                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
             </li>
-            <li class="nav-item start ">
+            {{--<li class="nav-item start ">--}}
 
             <li class="nav-item  @if (Route::currentRouteName() ==  'root.advice.index') active @endif">
                 <a href="{{ route("root.advice.index") }}" class="nav-link ">
                     <i class="fa fa-list" aria-hidden="true"></i>
                     <span class="title">Советы</span>
+                </a>
+            </li>
+
+            <li class="nav-item  @if (Route::currentRouteName() ==  'root.category.index') active @endif">
+                <a href="{{ route("root.category.index") }}" class="nav-link ">
+                    <i class="fa fa-th-large" aria-hidden="true"></i>
+                    <span class="title">Категории</span>
+                </a>
+            </li>
+
+            <li class="nav-item  @if (Route::currentRouteName() ==  'root.product.index') active @endif">
+                <a href="{{ route("root.product.index") }}" class="nav-link ">
+                    <i class="fa fa-archive" aria-hidden="true"></i>
+                    <span class="title">Товары</span>
                 </a>
             </li>
 

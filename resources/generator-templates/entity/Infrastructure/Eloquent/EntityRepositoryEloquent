@@ -29,14 +29,16 @@ class %1$sRepositoryEloquent implements %1$sRepository
      */
     public function all(%1$sFilter $filter, ?Pagination $pagination = null, ?Sort $sort = null)
     {
+        $qb =  $this->model->newModelQuery();
+
         if ($pagination) {
-            $items =  $this->model->forPage($pagination->page(), $pagination->peerPage())->get();
-            $maxItems =  $this->model->count();
+            $items =  $qb->forPage($pagination->page(), $pagination->peerPage())->get();
+            $maxItems =  $qb->count();
             return [
                 "items" => $items,
                 "total" => $maxItems
             ];
         }
-        return $this->model->all();
+        return $qb->all();
     }
 }

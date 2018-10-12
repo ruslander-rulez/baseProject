@@ -55,10 +55,10 @@ class MakeEntity extends Command
         $seedGenerator = new SeedGenerator($nameResolver, $fileWriter);
         $seedGenerator->make();
 
-/*        if ($this->option('crud')) {
+        if ($this->option('crud')) {
             $crudGenerator = new CrudGenerator($nameResolver, $fileWriter);
             $crudGenerator->make();
-        }*/
+        }
 /*
         if ($this->option('api')) {
             $apiGenerator = new ApiGenerator($nameResolver, $fileWriter);

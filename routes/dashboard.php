@@ -34,6 +34,24 @@ Route::group(['middleware' => 'auth.as.admin', "prefix" => "/root", "as" => "roo
         Route::delete("/", ["uses" => "AdviceController@delete", "as" => "advice.delete"]);
     });
 
+    Route::group(["prefix" => "/category"], function () {
+        Route::get("/", ["uses" => "CategoryController@index", "as" => "category.index"]);
+
+        Route::get("/list", ["uses" => "CategoryController@list", "as" => "category.list"]);
+        Route::put("/", ["uses" => "CategoryController@save", "as" => "category.save"]);
+        Route::post("/", ["uses" => "CategoryController@create", "as" => "category.create"]);
+        Route::delete("/", ["uses" => "CategoryController@delete", "as" => "category.delete"]);
+    });
+
+    Route::group(["prefix" => "/product"], function () {
+        Route::get("/", ["uses" => "ProductController@index", "as" => "product.index"]);
+
+        Route::get("/list", ["uses" => "ProductController@list", "as" => "product.list"]);
+        Route::put("/", ["uses" => "ProductController@save", "as" => "product.save"]);
+        Route::post("/", ["uses" => "ProductController@create", "as" => "product.create"]);
+        Route::delete("/", ["uses" => "ProductController@delete", "as" => "product.delete"]);
+    });
+
     Route::group(["prefix" => "/attachment"], function () {
         Route::get("/", ["uses" => "AdviceController@index", "as" => "advice.index"]);
 

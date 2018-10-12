@@ -72,7 +72,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-4 control-label">Локаль*</label>
                                         <div class="col-md-8" v-bind:class="errors['locale'] !== undefined ? 'has-error' : ''">
-                                            <input type="text" class="form-control" placeholder="Заголовок статьи"
+                                            <input type="text" class="form-control" placeholder="Locale"
                                                    v-model="advice.locale">
                                             <error-block v-bind:errors="errors['locale']" />
                                         </div>
@@ -82,7 +82,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-4 control-label">Слаг*</label>
                                         <div class="col-md-8" v-bind:class="errors['slug'] !== undefined ? 'has-error' : ''">
-                                            <input type="text" class="form-control" placeholder="Заголовок статьи"
+                                            <input type="text" class="form-control" placeholder="Slug"
                                                    v-model="advice.slug">
                                             <error-block v-bind:errors="errors['slug']"></error-block>
                                         </div>
@@ -133,7 +133,7 @@
                             <div class="tab-pane" v-bind:class="tab === 3 ? 'active' : ''">
                                 <div class="form-group row">
                                     <label class="col-md-2 control-label">Thumbnail</label>
-                                    <div class="col-md-10" v-bind:class="errors['seo_title'] !== undefined ? 'has-error' : ''">
+                                    <div class="col-md-10" v-bind:class="errors['attachment_id'] !== undefined ? 'has-error' : ''">
                                         <div style="display: inline-block; position: relative" v-if="advice.attachment instanceof Object">
                                             <i class="fa fa-close drop" v-on:click="deleteAttachment"></i>
                                             <img

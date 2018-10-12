@@ -57,7 +57,7 @@
             deleteItem: function () {
                 this.showDeleteWarning = false
                 window.HTTP.delete("/advice",{params: {
-                    "id" : this.product.id
+                    "id" : this.advice.id
                 }}).then(response => {
                     this.$emit('updateTable')
                 }).catch( e => {

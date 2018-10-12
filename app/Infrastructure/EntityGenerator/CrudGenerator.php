@@ -36,7 +36,7 @@ class CrudGenerator
 
         $entityName = $this->nameResolver->entityName();
 
-        //make commands
+/*        //make commands
         if (!file_exists(app_path() . '/Application/' . $entityName)) {
             File::makeDirectory(app_path() . '/Application/' . $entityName, 0777, true, true);
         }
@@ -100,7 +100,7 @@ class CrudGenerator
             app_path() . '/Http/Requests/Update' . $entityName . 'Request.php',
             resource_path() . '/generator-templates/crud/Requests/UpdateEntityRequest'
         );
-
+*/
         $viewFolderName = $this->nameResolver->viewFolderName();
 
         //make view
@@ -110,15 +110,24 @@ class CrudGenerator
 
         $this->fileWriter->makeFile(
             base_path() . '/resources/views/dashboard/' . $viewFolderName . '/index.blade.php',
-            resource_path() . '/generator-templates/crud/view/index.blade'
+            resource_path() . '/generator-templates/crud/view/index'
+        );
+
+        if (!file_exists(base_path() . '/resources/assets/js/components/' . $viewFolderName)) {
+            File::makeDirectory(base_path() . '/resources/assets/js/components/' . $viewFolderName, 0777, true, true);
+        }
+
+        $this->fileWriter->makeFile(
+            base_path() . '/resources/assets/js/components/' . $viewFolderName . '/app.js',
+            resource_path() . '/generator-templates/crud/components/app'
         );
 
         $this->fileWriter->makeFile(
-            base_path() . '/resources/views/dashboard/' . $viewFolderName . '/new.blade.php',
-            resource_path() . '/generator-templates/crud/view/new.blade'
+            base_path() . '/resources/assets/js/components/' . $viewFolderName . '/Table.vue',
+            resource_path() . '/generator-templates/crud/components/Table'
         );
 
-        $this->fileWriter->makeFile(
+  /*      $this->fileWriter->makeFile(
             base_path() . '/resources/views/dashboard/' . $viewFolderName . '/edit.blade.php',
             resource_path() . '/generator-templates/crud/view/edit.blade'
         );
@@ -134,6 +143,6 @@ class CrudGenerator
         $this->fileWriter->appendFile(
             base_path() . '/routes/dashboard.php',
             resource_path() . '/generator-templates/crud/routes/dashboard'
-        );
+        );*/
     }
 }
